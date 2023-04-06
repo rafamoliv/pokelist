@@ -22,7 +22,7 @@ A pokemon list company created for study and practice purposes.
 
 ## Access website
 
-- [poke.gg](https://pokegg.netlify.app/)
+- [poke.gg](https://pokegg-fantasycompany.netlify.app/)
 
 ## Technologies
 
