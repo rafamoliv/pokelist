@@ -19,7 +19,7 @@ createRoot(document.getElementById('root')!).render(
       <AppContextProvider>
         <MyThemeProvider>
           <BrowserRouter>
-            <Suspense fallback={<Loading size='md' />}>
+            <Suspense fallback={<Loading size="md" />}>
               <Routes />
             </Suspense>
           </BrowserRouter>

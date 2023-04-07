@@ -7,15 +7,15 @@ import { render } from '../../utils/tests'
 import { Loading } from '.'
 
 const props = {
-    children: i18next.t('translation:foo'),
-    loading: true
+  children: i18next.t('translation:foo'),
+  loading: true
 }
 
 describe('<Loading />', () => {
-    describe('Component Snapshot', () => {
-        it('render element', () => {
-            const { container } = render(<Loading {...props} />)
-            expect(container.firstChild).toMatchSnapshot()
-        })
+  describe('Component Snapshot', () => {
+    it('render element', () => {
+      const { container } = render(<Loading {...props} />)
+      expect(container.firstChild).toMatchSnapshot()
     })
+  })
 })

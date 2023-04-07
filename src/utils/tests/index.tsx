@@ -26,7 +26,10 @@ const AllTheProviders = ({ children }: { children: ReactNode }) => {
   )
 }
 
-const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'queries'>) => {
+const customRender = (
+  ui: ReactElement,
+  options?: Omit<RenderOptions, 'queries'>
+) => {
   return render(ui, {
     wrapper: AllTheProviders,
     ...options

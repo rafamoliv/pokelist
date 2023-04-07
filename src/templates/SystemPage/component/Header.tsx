@@ -2,7 +2,7 @@ import { HeaderProps } from '../types'
 
 /**
  * Internal pages template header
- * 
+ *
  * @param {ReactNode} children
  * @param {string} title
  */

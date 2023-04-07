@@ -13,27 +13,31 @@ interface LoadingProps {
   size?: 'sm' | 'md' | 'bg'
 }
 
-export const Loading = ({ children, loading = true, size = 'md' }: LoadingProps) => {
+export const Loading = ({
+  children,
+  loading = true,
+  size = 'md'
+}: LoadingProps) => {
   var dimension = 32
 
   switch (size) {
     case 'sm':
       dimension = 32
-      break;
+      break
     case 'md':
       dimension = 68
-      break;
+      break
     case 'bg':
       dimension = 125
-      break;
+      break
     default:
       dimension = 32
-      break;
+      break
   }
 
-  return <>
-    {
-      loading ?
+  return (
+    <>
+      {loading ? (
         <LoadingContent>
           <Lottie
             height={dimension}
@@ -47,8 +51,10 @@ export const Loading = ({ children, loading = true, size = 'md' }: LoadingProps)
             }}
             width={dimension}
           />
-        </LoadingContent> :
+        </LoadingContent>
+      ) : (
         children
-    }
-  </>
+      )}
+    </>
+  )
 }

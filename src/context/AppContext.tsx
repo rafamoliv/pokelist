@@ -29,9 +29,7 @@ export const AppContextProvider = (props: AppProviderProps) => {
   }
 
   return (
-    <AppContext.Provider
-      value={{ user, handleSignIn, handleSignOut }}
-    >
+    <AppContext.Provider value={{ user, handleSignIn, handleSignOut }}>
       {props.children}
     </AppContext.Provider>
   )

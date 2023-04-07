@@ -2,7 +2,7 @@ import { ChildrenProps } from '../types'
 
 /**
  * Internal pages template section
- * 
+ *
  * @param {ReactNode} children
  */
 
