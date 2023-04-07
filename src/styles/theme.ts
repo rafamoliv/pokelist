@@ -140,16 +140,14 @@ export const theme = {
     /** #ffffff */
     white: colors.white,
     primary: {
-      /** #D3D3D3 */
-      lightest: '#D3D3D3',
-      /** #F0F5F9 */
-      light: '#F0F5F9',
-      /** #C9D6DF */
-      medium: '#C9D6DF',
-      /** #52616B */
-      dark: '#52616B',
-      /** #49565e */
-      darkest: '#49565E'
+      /** #F4EEE0 */
+      light: colors.primary.light,
+      /** #6D5D6E */
+      medium: colors.primary.medium,
+      /** #4F4557 */
+      dark: colors.primary.dark,
+      /** #393646 */
+      darkest: colors.primary.darkest
     }
   }
 }

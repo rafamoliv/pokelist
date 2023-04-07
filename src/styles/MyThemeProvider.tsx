@@ -28,7 +28,7 @@ export const MyThemeProvider = ({ children }: { children: ReactNode }) => {
           font-family: ${theme.font.family};
           scroll-behavior: smooth;
           line-height: 1.2;
-          background-color: ${theme.colors.white};
+          background-color: ${theme.colors.primary.light};
         }
         input,
         button,
