@@ -30,6 +30,8 @@
     "@highcharts/map-collection": "^2.0.1",
     "@reduxjs/toolkit": "^1.8.5",
     "@types/react-lottie": "^1.2.6",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
     "date-fns": "^2.29.3",
     "framer-motion": "^10.11.2",
     "i18next": "^21.9.2",

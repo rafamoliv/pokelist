@@ -18,7 +18,12 @@
     ],
     "overrides": [
     ],
+    "parser": "@babel/eslint-parser",
     "parserOptions": {
+        "requireConfigFile": false,
+        "babelOptions": {
+          "presets": ["@babel/preset-react"]
+        },
         "ecmaFeatures": {
           "jsx": true
         },
@@ -28,7 +33,8 @@
     "plugins": [
         "react",
         "react-hooks",
-        "import"
+        "import",
+        "@typescript-eslint"
     ],
     "rules": {
       "linebreak-style": ["warn", "unix"],
