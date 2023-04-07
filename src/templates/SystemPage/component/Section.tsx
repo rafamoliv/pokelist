@@ -1,5 +1,3 @@
-import { Section as StyledSection } from '../SystemPage.style'
-import { Layout } from 'antd';
 import { ChildrenProps } from '../types'
 
 /**
@@ -9,5 +7,5 @@ import { ChildrenProps } from '../types'
  */
 
 export const Section = ({ children }: ChildrenProps) => {
-  return <Layout.Content><StyledSection>{children}</StyledSection></Layout.Content>
+  return <div>{children}</div>
 }
