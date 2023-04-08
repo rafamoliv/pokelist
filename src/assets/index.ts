@@ -7,6 +7,14 @@ export { default as IconPokeGG } from './poke.gg.svg'
 export { default as IconPokeGGSmall } from './gg.svg'
 
 /**
+ * Images
+ */
+
+export { default as ImgPokeBackground } from './images/poke-bg.jpg'
+export { default as ImgPokePurpleBackground } from './images/poke-bg-purple.jpg'
+export { default as ImgPokeBlackBackground } from './images/poke-bg-black.jpg'
+
+/**
  * Animations
  */
 
