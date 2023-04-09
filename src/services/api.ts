@@ -15,8 +15,8 @@ export const api = createApi({
   endpoints(builder) {
     return {
       fetchPokemons: builder.query({
-        query: (): FetchArgs => ({
-          url: `pokemon`
+        query: (limit): FetchArgs => ({
+          url: `pokemon?limit=${limit}`
         })
       })
     }
