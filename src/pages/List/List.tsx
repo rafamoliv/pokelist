@@ -122,7 +122,7 @@ const List = () => {
                             <Tr key={index}>
                               <Td width={'30%'}>{stats?.stat?.name}</Td>
                               <Td width={'10%'}>{stats?.base_stat}</Td>
-                              <Td width={'60%'}><Progress hasStripe value={stats?.base_stat} /></Td>
+                              <Td width={'60%'}><Progress colorScheme={'blackAlpha'} hasStripe value={stats?.base_stat} /></Td>
                             </Tr>
                           ))}
                         </Tbody>
