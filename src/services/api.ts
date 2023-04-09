@@ -7,7 +7,7 @@ import {
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://pokeapi.co/api/v2/',
+    baseUrl: '',
     prepareHeaders(headers) {
       return headers
     }
@@ -16,11 +16,16 @@ export const api = createApi({
     return {
       fetchPokemons: builder.query({
         query: (limit): FetchArgs => ({
-          url: `pokemon?limit=${limit}`
+          url: `https://pokeapi.co/api/v2/pokemon?limit=${limit}`
+        })
+      }),
+      fetchPokemonStats: builder.query({
+        query: (url): FetchArgs => ({
+          url: `${url}`
         })
       })
     }
   }
 })
 
-export const { useFetchPokemonsQuery } = api
+export const { useFetchPokemonsQuery, useLazyFetchPokemonStatsQuery } = api
