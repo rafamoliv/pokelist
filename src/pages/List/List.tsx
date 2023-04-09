@@ -1,20 +1,37 @@
 import { useTranslation } from 'react-i18next'
 import { Key, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useFetchPokemonsQuery } from '@/services/api'
+import { useFetchPokemonsQuery, useLazyFetchPokemonStatsQuery } from '@/services/api'
 import { SystemPage } from '@/templates'
 import { StyledIcon as Icon, StyledContainer as Container, TableHeading } from './List.styles'
 import { ArrowBackIcon, ArrowRightIcon, StarIcon } from '@chakra-ui/icons'
-import { Box, Button, Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, Stack, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Card, CardBody, Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, Stack, HStack, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr, useDisclosure, Image, Progress } from '@chakra-ui/react'
 import { url } from '@/routes/urls'
 import { Loading } from '@/components'
 
+interface pokeListProps {
+  name: string
+  url: string
+}
+
+interface pokeStatsProps {
+  base_stat: number
+  stat: {
+    name: string
+  }
+}
 
 const List = () => {
   const { t } = useTranslation('pgList')
   const [pokeLimit, setPokeLimit] = useState('10')
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { data: pokeList = [] } = useFetchPokemonsQuery(pokeLimit)
+  const [pokeStatsTrigger, { data: pokeStats = [], isFetching: isFetchingPokeStats }] = useLazyFetchPokemonStatsQuery()
+
+  const handlePokeModalStats = (url: string) => {
+    onOpen()
+    pokeStatsTrigger(url)
+  }
 
   return <SystemPage.Root>
     <section>
@@ -51,7 +68,7 @@ const List = () => {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {pokeList?.results?.map((poke: any, index: Key) => (
+                  {pokeList?.results?.map((poke: pokeListProps, index: Key) => (
                     <Tr key={index}>
                       <Td>{poke.name}</Td>
                       <Td textAlign={'center'}>
@@ -62,7 +79,7 @@ const List = () => {
                           border={'none'}
                           colorScheme='whiteAlpha'
                           isLoading={isOpen}
-                          onClick={onOpen}
+                          onClick={() => handlePokeModalStats(poke.url)}
                           rightIcon={<ArrowRightIcon />}
                           variant={'outline'}
                         />
@@ -84,19 +101,43 @@ const List = () => {
 
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
-          <ModalContent padding={isOpen ? 8 : ''}>
-            <Loading loading={true} size='sm'>
-              <ModalHeader>Modal Title</ModalHeader>
+          <ModalContent padding={isFetchingPokeStats ? 8 : ''}>
+            <Loading loading={isFetchingPokeStats} size='sm'>
+              <ModalHeader />
               <ModalCloseButton />
               <ModalBody>
-                Lorem count={2}
+                <Card maxW='sm' variant={'unstyled'}>
+                  <CardBody>
+                    <Image
+                      src={pokeStats?.sprites?.front_default}
+                      alt={pokeStats?.name}
+                      borderRadius='lg'
+                      margin={'auto'}
+                    />
+                    <Heading size='md'>{pokeStats?.name}</Heading>
+                    <TableContainer>
+                      <Table variant='simple'>
+                        <Tbody>
+                          {pokeStats?.stats?.map((stats: pokeStatsProps, index: Key) => (
+                            <Tr key={index}>
+                              <Td width={'30%'}>{stats?.stat?.name}</Td>
+                              <Td width={'10%'}>{stats?.base_stat}</Td>
+                              <Td width={'60%'}><Progress hasStripe value={stats?.base_stat} /></Td>
+                            </Tr>
+                          ))}
+                        </Tbody>
+                      </Table>
+                    </TableContainer>
+                  </CardBody>
+                </Card>
               </ModalBody>
-
               <ModalFooter>
-                <Button colorScheme='blackAlpha' mr={3} onClick={onClose}>
-                  Close
-                </Button>
-                <Button colorScheme='yellow' rightIcon={<StarIcon color={'gray.700'} />} variant='ghost' />
+                <HStack spacing={2}>
+                  <Button colorScheme='yellow' rightIcon={<StarIcon color={'gray.700'} />} variant='ghost' />
+                  <Button colorScheme='blackAlpha' mr={3} onClick={onClose}>
+                    {t('modal.btn', { context: 'close' })}
+                  </Button>
+                </HStack>
               </ModalFooter>
             </Loading>
           </ModalContent>

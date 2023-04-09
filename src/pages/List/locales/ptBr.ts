@@ -5,6 +5,9 @@ const listPtBr = {
       title: 'Pokelist',
       head: ['Nome', 'Favorito', 'Ver cartão'],
       caption: '"Ash jogou a Pokebola, capturando o Pikachu com sucesso."'
+    },
+    modal: {
+      btn_close: 'Fechar'
     }
   }
 }
