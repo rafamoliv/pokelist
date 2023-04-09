@@ -1,20 +1,14 @@
-import { useTranslation } from 'react-i18next'
 import { ChildrenProps } from '../types'
-import { useContext, useState } from 'react'
-import { AppContext } from '@/context/AppContext'
-import { useLocation, useNavigate } from 'react-router-dom'
-import config from '../SystemPage.config'
+import { MainContent } from '../SystemPage.style'
 
 /**
- * Internal pages template root
+ * System pages template root
  *
  * @param {ReactNode} children
  */
 
 export const Root = ({ children }: ChildrenProps) => {
-  const navigate = useNavigate()
-  const { pathname } = useLocation()
-  const { t, i18n } = useTranslation('systemPagesText')
-
-  return <div>{children}</div>
+  return <MainContent>
+    {children}
+  </MainContent>
 }
