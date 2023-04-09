@@ -1,6 +1,11 @@
 const listEn = {
   pgList: {
-    title: 'List'
+    btn_back: 'Back',
+    table: {
+      title: 'Pokelist',
+      head: ['Name', 'Favorite', 'View card'],
+      caption: '"Ash threw the Pokeball, successfully capturing Pikachu."'
+    }
   }
 }
 

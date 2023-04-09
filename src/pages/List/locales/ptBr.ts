@@ -1,6 +1,11 @@
 const listPtBr = {
   pgList: {
-    title: 'List'
+    btn_back: 'Voltar',
+    table: {
+      title: 'Pokelist',
+      head: ['Nome', 'Favorito', 'Ver cartão'],
+      caption: '"Ash jogou a Pokebola, capturando o Pikachu com sucesso."'
+    }
   }
 }
 
