@@ -5,16 +5,16 @@ import { useFetchPokemonsQuery } from '@/services/api'
 import { SystemPage } from '@/templates'
 import { StyledIcon as Icon, StyledContainer as Container, TableHeading } from './List.styles'
 import { ArrowBackIcon, ArrowRightIcon, StarIcon } from '@chakra-ui/icons'
-import { Box, Button, Heading, Select, Stack, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/react'
+import { Box, Button, Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, Stack, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr, useDisclosure } from '@chakra-ui/react'
 import { url } from '@/routes/urls'
+import { Loading } from '@/components'
 
 
 const List = () => {
   const { t } = useTranslation('pgList')
   const [pokeLimit, setPokeLimit] = useState('10')
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const { data: pokeList = [] } = useFetchPokemonsQuery(pokeLimit)
-
-  console.log(pokeList)
 
   return <SystemPage.Root>
     <section>
@@ -33,8 +33,8 @@ const List = () => {
                 {t('table.title')}
               </Heading>
               <Box>
-                <Select onChange={(e) => setPokeLimit(e.target.value)} size='md' variant={'Filled'}>
-                  <option value='10' selected>10</option>
+                <Select onChange={(e) => setPokeLimit(e.target.value)} size='md' value={pokeLimit} variant={'Filled'}>
+                  <option value='10'>10</option>
                   <option value='20'>20</option>
                   <option value='30'>30</option>
                 </Select>
@@ -54,9 +54,18 @@ const List = () => {
                   {pokeList?.results?.map((poke: any, index: Key) => (
                     <Tr key={index}>
                       <Td>{poke.name}</Td>
-                      <Td textAlign={'center'}><Icon as={StarIcon} /></Td>
                       <Td textAlign={'center'}>
-                        <Button border={'none'} colorScheme='whiteAlpha' isLoading={false} rightIcon={<ArrowRightIcon />} variant={'outline'} />
+                        <Icon as={StarIcon} color={'yellow'} />
+                      </Td>
+                      <Td textAlign={'center'}>
+                        <Button
+                          border={'none'}
+                          colorScheme='whiteAlpha'
+                          isLoading={isOpen}
+                          onClick={onOpen}
+                          rightIcon={<ArrowRightIcon />}
+                          variant={'outline'}
+                        />
                       </Td>
                     </Tr>
                   ))}
@@ -72,6 +81,26 @@ const List = () => {
             </TableContainer>
           </Stack>
         </Box>
+
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent padding={isOpen ? 8 : ''}>
+            <Loading loading={true} size='sm'>
+              <ModalHeader>Modal Title</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                Lorem count={2}
+              </ModalBody>
+
+              <ModalFooter>
+                <Button colorScheme='blackAlpha' mr={3} onClick={onClose}>
+                  Close
+                </Button>
+                <Button colorScheme='yellow' rightIcon={<StarIcon color={'gray.700'} />} variant='ghost' />
+              </ModalFooter>
+            </Loading>
+          </ModalContent>
+        </Modal>
       </Container>
     </section>
   </SystemPage.Root>
