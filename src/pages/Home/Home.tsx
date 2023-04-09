@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next'
 
 import { Section, StyledContainer as Container, AnimationBox, AsideBox } from './Home.styles'
-import { AnimationSquirtle, IconPokeGGBorderWhite, ImgFirered, ImgPikachu, ImgPokeBlackBackground, ImgPokemon } from '@/assets'
+import { AnimationSquirtle, ImgFirered, ImgPikachu, ImgPokemon } from '@/assets'
 import Lottie from 'react-lottie'
 import { SystemPage } from '@/templates'
-import { Heading, Text, Image, Stack, Box, Button, AvatarGroup, Avatar, VStack, HStack } from '@chakra-ui/react'
+import { Heading, Text, Image, Stack, Button, AvatarGroup, Avatar, HStack } from '@chakra-ui/react'
 import { ArrowForwardIcon, MinusIcon } from '@chakra-ui/icons'
 import { faker } from '@faker-js/faker'
 import { Link } from 'react-router-dom'
