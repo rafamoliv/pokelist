@@ -62,7 +62,6 @@ const rightAnimation = keyframes`
 export const Main = styled.main``
 
 export const Section = styled.section`
-  background: #000;
   display: flex;
   height: 100vh;
 
