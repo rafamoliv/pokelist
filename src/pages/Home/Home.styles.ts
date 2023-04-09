@@ -84,11 +84,12 @@ export const AnimationBox = styled(Box)`
   min-width: 40%;
   padding: 40px;
   position: relative;
+  top: 4%;
 
   .pokemonLogoImg {
     animation: ${pokeLogoAnimation} 1s ease-in-out;
     position: absolute;
-    top: -10%;
+    top: -15%;
     z-index: 1;
   }
 
