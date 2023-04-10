@@ -1,4 +1,4 @@
-import { render, screen, userEvent } from '@/utils/tests'
+import { render, screen } from '@/utils/tests'
 import Home from './Home'
 
 describe('<Home />', () => {
