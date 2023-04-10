@@ -1,0 +1,166 @@
+// Vitest Snapshot v1
+
+exports[`<List /> > Component Snapshot > Render element 1`] = `
+<main
+  class="css-0"
+>
+  <section>
+    <div
+      class="chakra-container css-0 css-tflc3m"
+    >
+      <div
+        class="css-37urdo"
+      >
+        <a
+          href="/"
+        >
+          <button
+            class="chakra-button css-4xx2wk"
+            type="button"
+          >
+            <span
+              class="chakra-button__icon css-1wh2kri"
+            >
+              <svg
+                aria-hidden="true"
+                class="chakra-icon css-onkibi"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            btn
+          </button>
+        </a>
+      </div>
+      <div
+        class="css-1whxuhf"
+      >
+        <div
+          class="chakra-stack css-17kdbol"
+        >
+          <div
+            class="css-uf1ume css-0"
+          >
+            <h3
+              class="chakra-heading css-1oa9rap"
+            >
+              table.title
+            </h3>
+            <div
+              class="css-0"
+            >
+              <div
+                class="chakra-select__wrapper css-42b2qy"
+              >
+                <select
+                  class="chakra-select css-1ik61og"
+                >
+                  <option
+                    value="10"
+                  >
+                    10
+                  </option>
+                  <option
+                    value="20"
+                  >
+                    20
+                  </option>
+                  <option
+                    value="30"
+                  >
+                    30
+                  </option>
+                </select>
+                <div
+                  class="chakra-select__icon-wrapper css-162mkon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="chakra-select__icon"
+                    focusable="false"
+                    role="presentation"
+                    style="width: 1em; height: 1em; color: currentColor;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="chakra-table__container css-1rujb15"
+          >
+            <table
+              class="chakra-table css-0"
+            >
+              <caption
+                class="css-18i7bby"
+              >
+                table.caption
+              </caption>
+              <thead
+                class="css-0"
+              >
+                <tr
+                  class="css-0"
+                >
+                  <th
+                    class="css-0"
+                  >
+                    table.head.0
+                  </th>
+                  <th
+                    class="css-q99f1g"
+                  >
+                    table.head.1
+                  </th>
+                  <th
+                    class="css-q99f1g"
+                  >
+                    table.head.2
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="css-0"
+              />
+              <tfoot
+                class="css-0"
+              >
+                <tr
+                  class="css-0"
+                >
+                  <th
+                    class="css-0"
+                  >
+                    table.head.0
+                  </th>
+                  <th
+                    class="css-xi606m"
+                  >
+                    table.head.1
+                  </th>
+                  <th
+                    class="css-xi606m"
+                  >
+                    table.head.2
+                  </th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+`;
