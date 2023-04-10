@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { MyThemeProvider } from '../src/styles'
 import { Provider } from 'react-redux'
 import { themes } from '@storybook/theming'
+import { ChakraProvider } from '@chakra-ui/react'
 import Store from '@/store'
 
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
@@ -88,17 +89,19 @@ export const decorators = [
     }, [locale]);
 
     return (
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Provider store={Store}>
-          <MyThemeProvider>
-            <I18nextProvider i18n={i18n}>
-              <BrowserRouter>
-                <Story />
-              </BrowserRouter>
-            </I18nextProvider>
-          </MyThemeProvider>
-        </Provider>
-      </Suspense>
+      <ChakraProvider>
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <Provider store={Store}>
+            <MyThemeProvider>
+              <I18nextProvider i18n={i18n}>
+                <BrowserRouter>
+                  <Story />
+                </BrowserRouter>
+              </I18nextProvider>
+            </MyThemeProvider>
+          </Provider>
+        </Suspense>
+      </ChakraProvider>
     )
   }
 ]

@@ -15,7 +15,8 @@ module.exports = {
   },
   features: {
     storyStoreV7: true,
-    interactionsDebugger: true
+    interactionsDebugger: true,
+    emotionAlias: false
   },
   viteFinal: async (config) => {
     const { config: userConfig } = await loadConfigFromFile(
