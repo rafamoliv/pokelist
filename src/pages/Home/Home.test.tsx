@@ -10,8 +10,6 @@ describe('<Home />', () => {
   })
 
   describe('Component Roles', () => {
-    render(<Home />)
-
     it('Should have title', () => {
       render(<Home />)
       expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument()
