@@ -8,6 +8,7 @@ import { ArrowBackIcon, ArrowRightIcon, StarIcon } from '@chakra-ui/icons'
 import { Box, Button, Card, CardBody, Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, Stack, HStack, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr, useDisclosure, Image, Progress } from '@chakra-ui/react'
 import { url } from '@/routes/urls'
 import { Loading } from '@/components'
+import { useLocalStorage } from '@/utils/hooks'
 
 interface pokeListProps {
   name: string
@@ -23,6 +24,7 @@ interface pokeStatsProps {
 
 const List = () => {
   const { t } = useTranslation('pgList')
+  const [favorite, setFavorite] = useLocalStorage('favorite', [''])
   const [pokeLimit, setPokeLimit] = useState('10')
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { data: pokeList = [] } = useFetchPokemonsQuery(pokeLimit)
@@ -32,6 +34,18 @@ const List = () => {
     onOpen()
     pokeStatsTrigger(url)
   }
+
+  const takeFavoritePoke = (poke: string) => {
+    let index = favorite.indexOf(poke);
+    if (index !== -1) {
+      favorite.splice(index, 1);
+      setFavorite(favorite)
+    } else {
+      setFavorite([...favorite, poke])
+    }
+  }
+
+  const takeStarredPoke = (poke: string) => favorite.includes(poke)
 
   return <SystemPage.Root>
     <section>
@@ -70,16 +84,20 @@ const List = () => {
                 <Tbody>
                   {pokeList?.results?.map((poke: pokeListProps, index: Key) => (
                     <Tr key={index}>
-                      <Td>{poke.name}</Td>
+                      <Td>{poke?.name}</Td>
                       <Td textAlign={'center'}>
-                        <Icon as={StarIcon} color={'yellow'} />
+                        <Icon
+                          as={StarIcon}
+                          color={takeStarredPoke(poke?.name) ? 'yellow' : 'gray.300'}
+                          onClick={() => takeFavoritePoke(poke?.name)}
+                        />
                       </Td>
                       <Td textAlign={'center'}>
                         <Button
                           border={'none'}
                           colorScheme='whiteAlpha'
                           isLoading={isOpen}
-                          onClick={() => handlePokeModalStats(poke.url)}
+                          onClick={() => handlePokeModalStats(poke?.url)}
                           rightIcon={<ArrowRightIcon />}
                           variant={'outline'}
                         />
@@ -132,8 +150,12 @@ const List = () => {
                 </Card>
               </ModalBody>
               <ModalFooter>
-                <HStack spacing={2}>
-                  <Button colorScheme='yellow' rightIcon={<StarIcon color={'gray.700'} />} variant='ghost' />
+                <HStack spacing={4}>
+                  <Icon
+                    as={StarIcon}
+                    color={takeStarredPoke(pokeStats?.name) ? 'yellow.400' : 'gray.700'}
+                    onClick={() => takeFavoritePoke(pokeStats?.name)}
+                  />
                   <Button colorScheme='blackAlpha' mr={3} onClick={onClose}>
                     {t('modal.btn', { context: 'close' })}
                   </Button>
