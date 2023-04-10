@@ -15,7 +15,6 @@
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "storybook": "start-storybook -p 6006",
-    "predeploy": "npm run build-storybook",
     "deploy-storybook": "gh-pages -d storybook-static",
     "build-storybook": "build-storybook",
     "prepare": "husky install"
