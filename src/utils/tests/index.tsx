@@ -8,6 +8,8 @@ import Store from '@/store'
 import { MyThemeProvider } from '@/styles'
 
 import i18n from './i18nForTests'
+import { BrowserRouter } from 'react-router-dom'
+import { AppContextProvider } from '@/context/AppContext'
 
 // Setup to testign library: https://testing-library.com/docs/react-testing-library/setup
 
@@ -19,9 +21,13 @@ afterEach(() => {
 const AllTheProviders = ({ children }: { children: ReactNode }) => {
   return (
     <Provider store={Store}>
-      <MyThemeProvider>
-        <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
-      </MyThemeProvider>
+      <AppContextProvider>
+        <MyThemeProvider>
+          <BrowserRouter>
+            <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+          </BrowserRouter>
+        </MyThemeProvider>
+      </AppContextProvider>
     </Provider>
   )
 }
