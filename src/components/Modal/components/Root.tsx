@@ -9,7 +9,7 @@ interface ModalPropsInterface extends ModalProps {
   loading?: boolean
 }
 
-export const Root = ({ children, isOpen, onClose, loading }: ModalPropsInterface) => {
+export const Root = ({ children, isOpen, onClose, loading = false }: ModalPropsInterface) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
