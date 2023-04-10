@@ -2,7 +2,7 @@
   <img src=".github/assets/poke.gg-border_white.svg" alt="poke.gg logo" width="296" />
 </center>
 
-# poke.gg
+# Pokelist - poke.gg
 
 A pokemon list company created for study and practice purposes.
 
@@ -39,7 +39,6 @@ A pokemon list company created for study and practice purposes.
 - [I18next](https://www.i18next.com/)
 - [I18next-react](https://react.i18next.com/)
 - [Fontawesome](https://fontawesome.com/)
-- [DateFNS](https://date-fns.org/)
 - [Faker](https://fakerjs.dev/guide/)
 - [Eslint](https://eslint.org/)
 - [Lint-Staged](https://github.com/okonet/lint-staged)
@@ -59,6 +58,7 @@ A pokemon list company created for study and practice purposes.
 ### How to run tests
 
 `yarn test`
+`yarn test:coverage`
 
 ### VsCode
 
@@ -85,6 +85,7 @@ Internationalization done using i18next, if in doubt, please read the documentat
 - `build`: generate for production.
 - `storybook`: runs the stories from storybook.
 - `test`: runs vitest and testing library tests.
+- `test:coverage`: runs coverage tests.
 - `preview`: generates for production and starts a local server on `http://localhost:{port}/`.
 - `lint`: runs the linter on all components and pages.
 - `format`: runs prettier to format all components and pages.
