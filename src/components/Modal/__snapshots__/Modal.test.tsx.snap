@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`<Modal /> > Component Snapshot > Render full element 1`] = `null`;
+
+exports[`<Modal /> > Component Snapshot > Render with just Body element 1`] = `null`;
+
+exports[`<Modal /> > Component Snapshot > Render with just Footer element 1`] = `null`;
