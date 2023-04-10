@@ -13,6 +13,30 @@ export default defineConfig(() => {
       alias: {
         '@': pathResolve('./src')
       }
+    },
+    test: {
+      globals: true,
+      environment: 'jsdom',
+      setupFiles: './vitest.setup.ts',
+      deps: {
+        inline: ['vitest-canvas-mock']
+      },
+      coverage: {
+        provide: 'c8',
+        exclude: [
+          'vitest.setup.ts',
+          '**/*.styles.ts',
+          '**/*.test.{ts,tsx}',
+          '**/*.stories.tsx',
+          '**/*.config.ts',
+          'src/assets/**/*',
+          'src/store/**/*',
+          'src/utils/tests/*',
+          'src/styles/*',
+          'src/components/**/index.ts',
+          'src/services/api.ts'
+        ]
+      }
     }
   }
 })
