@@ -7,7 +7,7 @@ import { StyledIcon as Icon, StyledContainer as Container, TableHeading } from '
 import { ArrowBackIcon, ArrowRightIcon, StarIcon } from '@chakra-ui/icons'
 import { Box, Button, Card, CardBody, Heading, Select, Stack, HStack, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr, useDisclosure, Image, Progress } from '@chakra-ui/react'
 import { url } from '@/routes/urls'
-import { Loading, Modal } from '@/components'
+import { Modal } from '@/components'
 import { useLocalStorage } from '@/utils/hooks'
 
 interface pokeListProps {
@@ -30,6 +30,8 @@ const List = () => {
   const { data: pokeList = [] } = useFetchPokemonsQuery(pokeLimit)
   const [pokeStatsTrigger, { data: pokeStats = [], isFetching: isFetchingPokeStats }] = useLazyFetchPokemonStatsQuery()
 
+  const [teste, setTeste] = useState(false)
+
   const handlePokeModalStats = (url: string) => {
     onOpen()
     pokeStatsTrigger(url)
@@ -43,9 +45,8 @@ const List = () => {
     } else {
       setFavorite([...favorite, poke])
     }
+    setTeste(!teste)
   }
-
-  const takeStarredPoke = (poke: string) => favorite.includes(poke)
 
   return (
     <SystemPage.Root>
@@ -89,7 +90,7 @@ const List = () => {
                         <Td textAlign={'center'}>
                           <Icon
                             as={StarIcon}
-                            color={takeStarredPoke(poke?.name) ? 'yellow' : 'gray.300'}
+                            color={favorite.indexOf(poke?.name) !== -1 ? 'yellow' : 'gray.300'}
                             onClick={() => takeFavoritePoke(poke?.name)}
                           />
                         </Td>
@@ -149,7 +150,7 @@ const List = () => {
               <HStack spacing={4}>
                 <Icon
                   as={StarIcon}
-                  color={takeStarredPoke(pokeStats?.name) ? 'yellow.400' : 'gray.700'}
+                  color={favorite.indexOf(pokeStats?.name) !== -1 ? 'yellow.400' : 'gray.700'}
                   onClick={() => takeFavoritePoke(pokeStats?.name)}
                 />
                 <Button colorScheme='blackAlpha' mr={3} onClick={onClose}>
