@@ -1,8 +1,6 @@
 import 'vitest-canvas-mock'
 import { vi } from 'vitest'
 import '@testing-library/jest-dom'
-import 'jest-styled-components'
-
 /**
  * Resize observe config for tests with vitest
  */
