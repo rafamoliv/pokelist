@@ -18,7 +18,7 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
-    "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom", "@emotion/react/types/css-prop"],
+    "types": ["vite/client", "@testing-library/jest-dom", "@emotion/react/types/css-prop"],
     "useDefineForClassFields": true,
   },
   "exclude": ["dist", "node_modules"],
