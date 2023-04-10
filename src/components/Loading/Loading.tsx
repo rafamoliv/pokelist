@@ -30,9 +30,6 @@ export const Loading = ({
     case 'bg':
       dimension = 125
       break
-    default:
-      dimension = 32
-      break
   }
 
   return (
